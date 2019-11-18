@@ -14,6 +14,7 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew installDist
   jmh-single-shot-time:
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -24,6 +25,7 @@ jobs:
     - name: JMH execution
       run: ./build/install/java-reflection-jmh/bin/java-reflection-jmh -f 2 -i 1 -wf 1 -wi 1 -bm ss
   jmh-throughput:
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -34,6 +36,7 @@ jobs:
     - name: JMH execution
       run: ./build/install/java-reflection-jmh/bin/java-reflection-jmh -f 2 -i 1 -wf 1 -wi 1
   jmh-average-time:
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
