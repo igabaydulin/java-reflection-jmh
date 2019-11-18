@@ -13,36 +13,9 @@ jobs:
         java-version: 1.8
     - name: Build with Gradle
       run: ./gradlew installDist
-  jmh-single-shot-time:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: Set up JDK 1.8
-      uses: actions/setup-java@v1
-      with:
-        java-version: 1.8
-    - name: JMH execution
+    - name: JMH Single Shot Time Execution
       run: ./build/install/java-reflection-jmh/bin/java-reflection-jmh -f 2 -i 1 -wf 1 -wi 1 -bm ss
-  jmh-throughput:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: Set up JDK 1.8
-      uses: actions/setup-java@v1
-      with:
-        java-version: 1.8
-    - name: JMH execution
+    - name: JMH Throughput Execution
       run: ./build/install/java-reflection-jmh/bin/java-reflection-jmh -f 2 -i 1 -wf 1 -wi 1
-  jmh-average-time:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: Set up JDK 1.8
-      uses: actions/setup-java@v1
-      with:
-        java-version: 1.8
-    - name: JMH execution
+    - name: JMH Average Time Execution
       run: ./build/install/java-reflection-jmh/bin/java-reflection-jmh -f 2 -i 1 -wf 1 -wi 1 -bm avgt
