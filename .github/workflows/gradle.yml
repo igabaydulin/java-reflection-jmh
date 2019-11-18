@@ -14,8 +14,8 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew installDist
     - name: JMH Single Shot Time Execution
-      run: ./build/install/java-reflection-jmh/bin/java-reflection-jmh -f 2 -i 1 -wf 1 -wi 1 -bm ss
+      run: ./build/install/java-reflection-jmh/bin/java-reflection-jmh -f 2 -i 1 -wf 1 -wi 1 -bm ss -tu ns
     - name: JMH Throughput Execution
       run: ./build/install/java-reflection-jmh/bin/java-reflection-jmh -f 2 -i 1 -wf 1 -wi 1
     - name: JMH Average Time Execution
-      run: ./build/install/java-reflection-jmh/bin/java-reflection-jmh -f 2 -i 1 -wf 1 -wi 1 -bm avgt
+      run: ./build/install/java-reflection-jmh/bin/java-reflection-jmh -f 2 -i 1 -wf 1 -wi 1 -bm avgt -tu ns
