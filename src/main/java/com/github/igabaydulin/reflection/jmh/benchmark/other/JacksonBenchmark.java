@@ -26,7 +26,8 @@ public class JacksonBenchmark {
   @Benchmark
   public void jacksonMapping(JacksonProvider provider, Blackhole blackhole)
       throws JsonProcessingException {
-    blackhole.consume(provider.objectMapper.readValue(provider.json, DTO.class));
+    DTO dto = provider.objectMapper.readValue(provider.json, DTO.class);
+    blackhole.consume(dto.getField());
   }
 
   public static class DTO {
