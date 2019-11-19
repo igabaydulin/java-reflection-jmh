@@ -6,7 +6,6 @@ import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
-import org.openjdk.jmh.infra.Blackhole;
 
 public class JacksonBenchmark {
 
@@ -24,9 +23,9 @@ public class JacksonBenchmark {
   }
 
   @Benchmark
-  public void jacksonMapping(JacksonProvider provider, Blackhole blackhole)
+  public String jacksonMapping(JacksonProvider provider)
       throws JsonProcessingException {
-    blackhole.consume(provider.objectMapper.readValue(provider.json, DTO.class));
+    return provider.objectMapper.readValue(provider.json, DTO.class).getField();
   }
 
   public static class DTO {
