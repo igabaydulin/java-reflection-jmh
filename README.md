@@ -1,4 +1,4 @@
-# Java Reflection JMH Benchmarks
+# Java Reflection JMH Benchmarks [![Version](https://img.shields.io/badge/Version-1.0.0-color.svg)](https://github.com/igabaydulin/java-reflection-jmh/releases/tag/1.0.0) 
 
 > There are three kinds of lies: lies, damned lies, and benchmarks.
 
@@ -6,20 +6,29 @@ Contains number of benchmarks which may help to check if reflection usage
 can lead to performance issues in your application. You can easily add
 your custom metrics if you need to.
 
-## Build
+## Download
+You can use pre-built binaries available on GitHub releases [page](https://github.com/igabaydulin/java-reflection-jmh/releases)
+
+## JMH Execution
 ```bash
-./gradlew installDist
+./bin/java-reflection-jmh -f 2 -i 1 -wf 1 -wi 1
 ```
 
-## Execution
+You also can start JMH benchmark by `java` if you want to
 ```bash
-./build/install/java-reflection-jmh/bin/java-reflection-jmh -f 2 -i 1 -wf 1 -wi 1
+java -cp "./lib/*" org.openjdk.jmh.Main -f 2 -i 1 -wf 1 -wi 1
 ```
 
-To get the full list of available options you can use `-h` argument:
-```bash
-./build/install/java-reflection-jmh/bin/java-reflection-jmh -h
+*Note: To get the full list of available options you can use `-h` argument*
 ```
+./bin/java-reflection-jmh -h
+```
+
+## Build from Sources
+```bash
+./gradlew build
+```
+Built binaries you will find in `build/distributions` folder
 
 ## Output
 >REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
