@@ -1,4 +1,4 @@
-package com.github.igabaydulin.reflection.jmh;
+package com.github.igabaydulin.reflection.jmh.benchmark.other;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

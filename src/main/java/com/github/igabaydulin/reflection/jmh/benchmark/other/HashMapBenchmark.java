@@ -1,4 +1,4 @@
-package com.github.igabaydulin.reflection.jmh;
+package com.github.igabaydulin.reflection.jmh.benchmark.other;
 
 import java.util.HashMap;
 import java.util.Map;

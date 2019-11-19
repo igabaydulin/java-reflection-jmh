@@ -1,12 +1,12 @@
 package com.github.igabaydulin.reflection.jmh;
 
-class Library {
+public class Library {
 
   private boolean privateMethod() {
     return true;
   }
 
-  boolean publicMethod() {
+  public boolean publicMethod() {
     return privateMethod();
   }
 }
