@@ -14,19 +14,19 @@ public class JacksonBenchmark {
   public static class JacksonProvider {
 
     ObjectMapper objectMapper;
+    String json;
 
     @Setup
     public void setUp() {
       objectMapper = new ObjectMapper();
+      json = "{\"field\": \"Hello, world!\"}";
     }
   }
 
   @Benchmark
   public void jacksonMapping(JacksonProvider provider, Blackhole blackhole)
       throws JsonProcessingException {
-    ObjectMapper mapper = provider.objectMapper;
-    DTO dto = mapper.readValue("{\"field\": \"Hello, world!\"}", DTO.class);
-    blackhole.consume(dto);
+    blackhole.consume(provider.objectMapper.readValue(provider.json, DTO.class));
   }
 
   public static class DTO {
