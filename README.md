@@ -6,20 +6,31 @@ Contains number of benchmarks which may help to check if reflection usage
 can lead to performance issues in your application. You can easily add
 your custom metrics if you need to.
 
-## Download
-You can use pre-built binaries available on GitHub releases [page](https://github.com/igabaydulin/java-reflection-jmh/releases)
+## Table of Contents
+* [Download](#download)
+* [Running Benchmarks](#running-benchmarks)
+* [Build from Sources](#build-from-sources)
+* [Running from Sources](#running-from-sources)
+* [Output](#output)
+  * [JMH Average Time Output](#jmh-average-time-output)
+  * [JMH Throughput Output](#jmh-throughput-output)
+* [GitHub Actions](#github-actions)
+* [Some Thoughts](#some-thoughts)
 
-## JMH Execution
+## Download
+Pre-built binaries are available on GitHub [releases page](https://github.com/igabaydulin/java-reflection-jmh/releases)
+
+## Running Benchmarks
 ```bash
 ./bin/java-reflection-jmh -f 1 -i 5 -wf 1 -wi 1 -r 1 -w 1 -to 5
 ```
 
-You also can start JMH benchmark by `java` if you want to
+Or
 ```bash
 java -cp "./lib/*" org.openjdk.jmh.Main -f 1 -i 5 -wf 1 -wi 1 -r 1 -w 1 -to 5
 ```
 
-*Note: To get the full list of available options you can use `-h` argument*
+Getting the full list of available options
 ```
 ./bin/java-reflection-jmh -h
 ```
@@ -28,7 +39,12 @@ java -cp "./lib/*" org.openjdk.jmh.Main -f 1 -i 5 -wf 1 -wi 1 -r 1 -w 1 -to 5
 ```bash
 ./gradlew build
 ```
-Built binaries you will find in `build/distributions` folder
+Built binaries are available then in `build/distributions` folder
+
+## Running from Sources
+```bash
+./gradlew run --args='-f 1 -i 5 -wf 1 -wi 1 -r 1 -w 1 -to 5'
+```
 
 ## Output
 >REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
@@ -36,6 +52,7 @@ Built binaries you will find in `build/distributions` folder
  experiments, perform baseline and negative tests that provide experimental control, make sure
  the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
  Do not assume the numbers tell you what you want them to tell.
+
 ### JMH Average Time Output
 ```
 Benchmark                                                 Mode  Cnt    Score    Error  Units
@@ -62,6 +79,13 @@ c.g.i.r.j.b.runtime.PublicMethodReflectionAccess.invoke   thrpt    5  140913668.
 c.g.i.r.j.b.runtime.PublicMethodReflectionAccess.lookup   thrpt    5   22118062.601 ±  5134828.430  ops/s
 c.g.i.r.j.b.runtime.ReflectionInstance.newInstance        thrpt    5   17292500.632 ±  3342972.344  ops/s
 ```
+
+## GitHub Actions
+> YMMV
+
+Benchmarks results are presented on [Actions page](https://github.com/igabaydulin/java-reflection-jmh/actions).
+
+[More details about GitHub Actions](https://github.com/features/actions)
 
 ## Some Thoughts
 *It seems like* method lookup by reflection is the most time-consuming
